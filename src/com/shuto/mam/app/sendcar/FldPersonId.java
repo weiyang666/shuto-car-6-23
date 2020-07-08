@@ -34,7 +34,8 @@ public class FldPersonId extends MAXTableDomain {
 
     @Override
     public MboSetRemote getList() throws MXException, RemoteException {
-
+        String siteid = getMboValue().getMbo().getString("SITEID");
+        System.out.println(siteid);
         return super.getList();
     }
 }

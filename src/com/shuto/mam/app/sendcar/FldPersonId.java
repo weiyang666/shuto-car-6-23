@@ -32,10 +32,16 @@ public class FldPersonId extends MAXTableDomain {
     }
 
 
+    /**
+     * 选择人员时,根据地点过滤,获取当前用户的默认地点
+     * @return
+     * @throws MXException
+     * @throws RemoteException
+     */
     @Override
     public MboSetRemote getList() throws MXException, RemoteException {
         String siteid = getMboValue().getMbo().getString("SITEID");
-        System.out.println(siteid);
+        setListCriteria("LOCATIONSITE='"+siteid+"'");
         return super.getList();
     }
 }

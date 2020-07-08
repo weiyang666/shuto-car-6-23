@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<presentation beanclass="com.shuto.mam.webclient.beans.vehicledispatching.VehicleDispatchingAppBean"
+              id="vehicledispatching" ismobile="false" mboname="SENDCAR" resultstableid="results_showlist"
+              version="6.0.0">
+    <page id="mainrec" scroll="false">
+        <include controltoclone="pageHeader" id="INCLUDE-pageHeader"/>
+        <clientarea id="clientarea">
+            <tabgroup id="maintabs" style="form">
+                <tab default="true" id="results" label="列表" type="list">
+                    <menubar event="search" id="actiontoolbar1" sourcemethod="getAppSearchOptions"/>
+                    <table id="results_showlist" inputmode="readonly" label="TABLE TITLE" mboname="SENDCAR"
+                           orderby="APPLICATIONDATE desc" selectmode="multiple">
+                        <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true"
+                                   id="results_showlist_tablebody">
+                            <tablecol dataattribute="SENDCARID" filterable="false" id="results_showlist_column_select"
+                                      mxevent="toggleselectrow" mxevent_desc="Select Row {0}" sortable="false"
+                                      type="event"/>
+                            <tablecol dataattribute="APPLICATIONNUMBER" id="results_showlist_column_link" label="申请编号"
+                                      mxevent="selectrecord" mxevent_desc="Go To %1" type="link"
+                                      usefieldsizegroup="false"/>
+                            <tablecol dataattribute="TITLE" id="results_showlist_column1" label="标题"/>
+                            <tablecol dataattribute="PROPOSER" id="results_showlist_column2" label="申请人"/>
+                            <tablecol dataattribute="APPLICATIONDATE" id="1593251875424" label="申请日期"/>
+                            <tablecol filterable="false" id="results_bookmark" mxevent="BOOKMARK"
+                                      mxevent_desc="Add to Bookmarks" mxevent_icon="btn_addtobookmarks.gif"
+                                      sortable="false" type="event"/>
+                        </tablebody>
+                    </table>
+                </tab>
+                <tab id="main" label="派车申请" type="insert">
+                    <section id="1593251782312">
+                        <sectionrow id="1593251925012">
+                            <sectioncol id="1593251938370">
+                                <textbox dataattribute="APPLICATIONNUMBER" id="1593251995932" inputmode="readonly"
+                                         label="申请编号" size="15"/>
+                            </sectioncol>
+                            <sectioncol id="1593251936176">
+                                <textbox dataattribute="CAPERSONNUM" id="1593252015666" label="乘车人数" size="10"/>
+                            </sectioncol>
+                            <sectioncol id="1593251934356">
+                                <textbox dataattribute="PROPOSER" id="1593251999376" label="申请人" size="10"/>
+                            </sectioncol>
+                            <sectioncol id="1593251964777">
+                                <textbox dataattribute="APPLICATIONDATE" id="1593252001042" label="申请日期"
+                                         lookup="datelookup"/>
+                            </sectioncol>
+                            <sectioncol id="1593251925014">
+                                <section id="1593251988126">
+                                    <attachments id="1593251992145"/>
+                                </section>
+                            </sectioncol>
+                        </sectionrow>
+                        <sectionrow id="1593251930063">
+                            <sectioncol id="1593251943623">
+                                <textbox dataattribute="TITLE" id="1593251997626" label="标题" size="18"/>
+                            </sectioncol>
+                            <sectioncol id="1593251966331">
+                                <textbox dataattribute="USERCARTYPE" id="1593252024582" inputmode="required"
+                                         label="用车类型" lookup="valuelist" size="10"/>
+                            </sectioncol>
+                            <sectioncol id="1593251941985">
+                                <textbox dataattribute="STATUS" id="1593252018593" label="状态" size="10"/>
+                            </sectioncol>
+                            <sectioncol id="1593251940043">
+                                <textbox dataattribute="APPLICATIONPHONE" id="1593252020814" inputmode="required"
+                                         label="申请人电话" size="10"/>
+                            </sectioncol>
+                            <sectioncol id="1593251930066">
+                                <multiparttextbox dataattribute="PERSONID" descdataattribute="PERSON.DISPLAYNAME"
+                                                  id="1593503381344" inputmode="required" label="用车人"
+                                                  lookup="personid"/>
+                            </sectioncol>
+                        </sectionrow>
+                        <sectionrow id="1593251932168">
+                            <sectioncol id="1593251967897">
+                                <multilinetextbox dataattribute="USECARREASONS" id="1594000584107" inputmode="required"
+                                                  label="用车事由"/>
+                            </sectioncol>
+                            <sectioncol id="1593251949408">
+                                <textbox dataattribute="PCPHONE" id="1593252013970" inputmode="required" label="用车人电话"
+                                         size="10"/>
+                            </sectioncol>
+                            <sectioncol id="1593251947370">
+                                <textbox dataattribute="CARTYPE" id="1593252026202" inputmode="required" label="车类别"
+                                         lookup="valuelist" size="10"/>
+                            </sectioncol>
+                            <sectioncol id="1593251945562">
+                                <textbox dataattribute="STARTDATE" id="1593252027898" inputmode="required" label="出发时间"
+                                         lookup="datelookup" size="15"/>
+                            </sectioncol>
+                            <sectioncol id="1593251932170">
+                                <textbox dataattribute="ENDDATE" id="1593252029665" inputmode="required" label="结束时间"
+                                         lookup="datelookup" size="15"/>
+                            </sectioncol>
+                        </sectionrow>
+                        <sectionrow id="1593251970185">
+                            <sectioncol id="1593251976878">
+                                <textbox dataattribute="FLIGHT" id="1593252031114" label="航班" size="15"/>
+                            </sectioncol>
+                            <sectioncol id="1593251975267">
+                                <textbox dataattribute="STARTAIRPORT" id="1593252032297" label="出发机场(车站)" size="10"/>
+                            </sectioncol>
+                            <sectioncol id="1593251973554">
+                                <textbox dataattribute="ARRIVEAIRPORT" id="1593252035816" label="到达机场(车站)" size="10"/>
+                            </sectioncol>
+                            <sectioncol id="1593251971850">
+                                <textbox dataattribute="DEPARTUREDATE" id="1593252037323" label="起飞(发车)时间"
+                                         lookup="datelookup" size="10"/>
+                            </sectioncol>
+                            <sectioncol id="1593251970187">
+                                <textbox dataattribute="FALLDATE" id="1593252038683" label="降落(到站)时间"
+                                         lookup="datelookup" size="10"/>
+                            </sectioncol>
+                        </sectionrow>
+                        <sectionrow id="1593253807342">
+                            <sectioncol id="1593253829596">
+                                <textbox dataattribute="WEATHER" id="1593253832195" label="天气" size="15"/>
+                            </sectioncol>
+                            <sectioncol id="1593253827324">
+                                <textbox dataattribute="LICENSEPLATE" id="1593253960717" label="车牌号"
+                                         lookup="NUMBERPLATE" size="10"/>
+                            </sectioncol>
+                            <sectioncol id="1593253955107">
+                                <textbox dataattribute="REMARK" id="1593253981789" label="备注" size="10"/>
+                            </sectioncol>
+                            <sectioncol id="1593253956483">
+                                <textbox dataattribute="PHONE" id="1593253979796" label="联系电话" size="10"/>
+                            </sectioncol>
+                            <sectioncol id="1593500034944">
+                                <multiparttextbox dataattribute="DRIVER" descdataattribute="DRIVER.DRIVERNAME"
+                                                  id="1593500037738" label="驾驶员" lookup="DRIVERNUMBER"/>
+                            </sectioncol>
+                            <sectioncol id="1593253807347"/>
+                        </sectionrow>
+                    </section>
+                    <table id="1593267362463" label="人员选择" relationship="APPLICATIONNUMBER">
+                        <defaultvalue dataattribute="APPLICATIONNUMBER" fromattribute="APPLICATIONNUMBER"
+                                      fromdatasrc="mainrecord" id="1593267512761"/>
+                        <tablebody id="1593267362468">
+                            <tablecol id="1593267364896" mxevent="toggledetailstate"/>
+                            <tablecol dataattribute="PERSONNUMBER" id="1593267366155" label="编号"/>
+                            <tablecol dataattribute="PERSONNAME" id="1593267367370" label="姓名"/>
+                            <tablecol id="1593267362470" mxevent="toggledeleterow" mxevent_icon="btn_garbage.gif"/>
+                        </tablebody>
+                        <tabledetails id="1593267362474"/>
+                        <buttongroup id="1593267703959">
+                            <pushbutton id="1593267863030" label="选择人员" mxevent="personid"/>
+                        </buttongroup>
+                    </table>
+                    <table id="1593482798898" relationship="WFTRANSACTION">
+                        <tablebody id="1593482798903">
+                            <tablecol dataattribute="NODE.TITLE" id="1593482800848" label="标题"/>
+                            <tablecol dataattribute="TRANSDATE" id="1593482798906" label="审批时间"/>
+                            <tablecol dataattribute="PERSON.DISPLAYNAME" id="1593482801709" label="审批人"/>
+                            <tablecol dataattribute="MEMO" id="1593482802561" label="审批意见"/>
+                        </tablebody>
+                        <tabledetails id="1593482798910"/>
+                    </table>
+                </tab>
+            </tabgroup>
+        </clientarea>
+        <include controltoclone="pageFooter" id="INCLUDE-pageFooter"/>
+    </page>
+    <dialog beanclass="com.shuto.mam.webclient.beans.vehicledispatching.SelectPersonDataBean" id="personid" label="选择人员"
+            mboname="person">
+        <table id="personid_table" inputmode="readonly" selectmode="multiple">
+            <tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="personid_table_tablebody">
+                <tablecol filterable="false" id="personid_lookup_tablebody_col_1" mxevent="toggleselectrow"
+                          sortable="false" type="event"/>
+                <tablecol dataattribute="PERSONID" id="personid_tablecolumn_1" mxevent="selectrecord" type="link"/>
+                <tablecol dataattribute="DISPLAYNAME" id="personid_tablecolumn_2"/>
+            </tablebody>
+        </table>
+        <buttongroup id="PERSONID_2">
+            <pushbutton default="true" id="PERSONID_2_1" label="确定" mxevent="dialogok"/>
+            <pushbutton id="PERSONID_2_2" label="取消" mxevent="dialogcancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.system.beans.QbeBean" id="searchmore" inputmode="query"
+            label="More Search Fields">
+        <section id="searchmore_1">
+            <textbox dataattribute="SENDCARID" id="searchmore_attr1"/>
+            <textbox dataattribute="DESCRIPTION" id="searchmore_attr2"/>
+            <textbox dataattribute="DESCRIPTION_LONGDESCRIPTION" id="searchmore_attr3"/>
+            <checkbox dataattribute="HASLD" id="searchmore_attr4"/>
+            <textbox dataattribute="TITLE" id="searchmore_attr5"/>
+            <textbox dataattribute="PROPOSER" id="searchmore_attr6"/>
+            <textbox dataattribute="APPLICATIONDATE" id="searchmore_attr7" lookup="datelookup"/>
+            <textbox dataattribute="STATUS" id="searchmore_attr8"/>
+            <textbox dataattribute="TRANSPORTPEOPLE" id="searchmore_attr9"/>
+            <textbox dataattribute="PCPHONE" id="searchmore_attr10"/>
+            <textbox dataattribute="USECARREASONS" id="searchmore_attr11"/>
+            <textbox dataattribute="APPLICATIONNUMBER" id="searchmore_attr12"/>
+            <textbox dataattribute="CARTYPE" id="searchmore_attr13"/>
+            <textbox dataattribute="STARTDATE" id="searchmore_attr14" lookup="datelookup"/>
+            <textbox dataattribute="ENDDATE" id="searchmore_attr15" lookup="datelookup"/>
+            <textbox dataattribute="FLIGHT" id="searchmore_attr16"/>
+            <textbox dataattribute="STARTAIRPORT" id="searchmore_attr17"/>
+            <textbox dataattribute="ARRIVEAIRPORT" id="searchmore_attr18"/>
+            <textbox dataattribute="DEPARTUREDATE" id="searchmore_attr19" lookup="datelookup"/>
+            <textbox dataattribute="FALLDATE" id="searchmore_attr20" lookup="datelookup"/>
+            <textbox dataattribute="WEATHER" id="searchmore_attr21"/>
+            <textbox dataattribute="LICENSEPLATE" id="searchmore_attr22"/>
+            <textbox dataattribute="DRIVER" id="searchmore_attr23"/>
+            <textbox dataattribute="PHONE" id="searchmore_attr24"/>
+            <textbox dataattribute="REMARK" id="searchmore_attr25"/>
+            <textbox dataattribute="ORGID" id="searchmore_attr26"/>
+            <textbox dataattribute="SITEID" id="searchmore_attr27"/>
+            <textbox dataattribute="USERCARTYPE" id="searchmore_attr28"/>
+        </section>
+        <buttongroup id="searchmore_buttongroup">
+            <pushbutton default="true" id="searchmore_buttongroup_1" label="Find" mxevent="dialogok"/>
+            <pushbutton id="qbe_restoreappdefault_button" label="恢复应用程序缺省值" mxevent="qbeclear"/>
+            <pushbutton id="qbe_revisebutton" label="修订" menutype="SEARCHMOREREVISE" targetid="searchmore"/>
+            <pushbutton id="searchmore_buttongroup_3" label="Cancel" mxevent="qbecancel"/>
+        </buttongroup>
+    </dialog>
+    <dialog beanclass="psdi.webclient.system.beans.ViewBookmarksBean" id="searchbook" label="我的书签" mboname="SENDCAR">
+        <table id="bookmarks_table" inputmode="readonly" selectmode="single">
+            <tablebody displayrowsperpage="20" filterable="true" id="bookmarks_table_tablebody">
+                <tablecol dataattribute="SENDCARID" id="bookmarks_tablecolumn_1" mxevent="selectrecord" type="link"/>
+                <tablecol dataattribute="description" id="bookmarks_tablecolumn_2"/>
+                <tablecol filterable="false" id="bookmarks_tablecolumn_3" mxevent="instantdelete" mxevent_desc="Delete"
+                          mxevent_icon="btn_delete.gif" sortable="false" type="event"/>
+            </tablebody>
+        </table>
+        <buttongroup id="bookmarks_2">
+            <pushbutton default="true" id="bookmarks_2_1" label="确定" mxevent="dialogok"/>
+        </buttongroup>
+    </dialog>
+    <configurationblock id="datastore_configurationblock"></configurationblock>
+</presentation>
